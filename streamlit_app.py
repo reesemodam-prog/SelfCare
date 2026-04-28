@@ -1,6 +1,16 @@
 import streamlit as st
 
 st.title("🌿 Self-Care Assessment Tool 🌿")
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background-color: #C8F7E5;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 st.markdown("""
 Self-assessment is an important reflective process that helps individuals understand their strengths and areas for improvement and supports self-directed learning.  
 This tool aims to:

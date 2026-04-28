@@ -1,22 +1,24 @@
 import streamlit as st
 
 st.title("🌿 Self-Care Assessment Tool")
-st.write("""
+st.markdown("""
 This tool aims to:
 
-1- Promote self-awareness and reflection.
-2- Support holistic wellbeing.
-3- Encourage individuals to identify areas for growth in self-care.
-4- Align with holistic approaches to wellbeing in education and professional practice.
+1. Promote self-awareness and reflection  
+2. Support holistic wellbeing  
+3. Encourage individuals to identify areas for growth in self-care  
+4. Align with holistic approaches to wellbeing in education and professional practice  
 
-Self-assessment is an important reflective process that helps individuals understand their strengths and areas for improvement and supports self-directed learning.
+Self-assessment is an important reflective process that helps individuals understand their strengths and areas for improvement and supports self-directed learning.  
+
 Reflect on each statement and select how often it applies to your current lifestyle.
-### Scale:
-1 = It has never occurred to me  
-2 = Never  
-3 = Sometimes  
-4 = Fairly Often  
-5 = Frequently  
+
+### Scale
+- 1 = It has never occurred to me  
+- 2 = Never  
+- 3 = Sometimes  
+- 4 = Fairly Often  
+- 5 = Frequently  
 """)
 # -----------------------------
 # FULL QUESTION SET
@@ -51,7 +53,7 @@ categories = {
 "Take a step to decrease stress in your life",
 "Notice your inner experience (dreams, thoughts, feelings)",
 "Let others know different aspects of you",
-"Engage your intelligence in a new area",
+"Engage your intelligence in a new area, cultural activity, sports event, etc",
 "Be curious",
 "Say no to extra responsibilities sometimes",
 "Spend time outdoors"
@@ -59,10 +61,10 @@ categories = {
 
 "Emotional Self-Care": [
 "Spend time with others whose company you enjoy",
-"Stay in contact with important people",
-"Treat yourself kindly (self-talk)",
+"Stay in contact with important people in your life",
+"Treat yourself kindly (supportive inner dialogue or self-talk)",
 "Feel proud of yourself",
-"Reread favourite books or movies",
+"Reread favourite books or re-watch favourite movies",
 "Seek comforting activities, people, places",
 "Allow yourself to cry",
 "Find things that make you laugh",
@@ -73,7 +75,7 @@ categories = {
 "Spiritual Self-Care": [
 "Make time for prayer, meditation, reflection",
 "Spend time in nature",
-"Participate in a spiritual community",
+"Participate in a spiritual gathering, community or group",
 "Be open to inspiration",
 "Cherish optimism and hope",
 "Be aware of intangible aspects of life",
@@ -94,11 +96,11 @@ categories = {
 "Take time to eat lunch",
 "Take time to chat with co-workers",
 "Make time to complete tasks",
-"Do work that promotes growth",
+"Identify tasks that are exciting and rewarding and promote growth",
 "Set limits with clients and colleagues",
 "Balance workload",
-"Arrange a comfortable workspace",
-"Get supervision and consultation",
+"Arrange your workplace so it is comfortable and comforting",
+"Get regular supervision and consultation",
 "Negotiate for your needs",
 "Have a peer support group"
 ]

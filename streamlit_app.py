@@ -140,7 +140,11 @@ if st.button("📊 Calculate My Results"):
         st.warning("🟡 Moderate self-care: You are practicing some strategies, but there is room to grow.")
     else:
         st.success("🟢 Strong self-care: You are maintaining healthy and consistent self-care practices.")
-
+    st.subheader("⚠️ Disclaimer")
+    st.info("""
+    This tool is intended for educational and reflective purposes only.  
+    It is not a diagnostic or clinical assessment.
+    """)
     # -----------------------------
     # CATEGORY BREAKDOWN
     # -----------------------------
@@ -160,11 +164,7 @@ if st.button("📊 Calculate My Results"):
     # -----------------------------
     # REFLECTION (important for your course)
     # -----------------------------
-    st.subheader("⚠️ Disclaimer")
-st.write("""
-This tool is intended for educational and reflective purposes only.
-It is not a diagnostic or clinical assessment.
-""")
+
    # reflection = st.text_area(
    #     "What is ONE small action you will take this week to improve your self-care?"
   #  )

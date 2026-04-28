@@ -1,13 +1,19 @@
 import streamlit as st
-#from fpdf import FPDF
 
 st.set_page_config(page_title="Self-Care Assessment", layout="centered")
 
+# -----------------------------
+# SESSION STATE
+# -----------------------------
 if "step" not in st.session_state:
     st.session_state.step = 0
 
 if "responses" not in st.session_state:
     st.session_state.responses = {}
+
+# -----------------------------
+# STYLING
+# -----------------------------
 st.markdown(
     """
     <style>
@@ -18,8 +24,35 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 # -----------------------------
-# FULL QUESTION SET
+# TITLE + INTRO
+# -----------------------------
+st.title("🌿 Self-Care Assessment Tool 🌿")
+
+st.markdown("""
+Self-assessment is an important reflective process that helps individuals understand their strengths and areas for improvement and supports self-directed learning.  
+
+This tool aims to:
+
+1. Promote self-awareness and reflection  
+2. Support holistic wellbeing  
+3. Encourage individuals to identify areas for growth in self-care  
+4. Align with holistic approaches to wellbeing in education and professional practice  
+
+This self-care assessment is adapted from:  
+https://rise.articulate.com/share/i3RuAxAmlt3AIEi5QS1Fyasu-JYib9LT  
+
+### Scale
+- 1 = It has never occurred to me  
+- 2 = Never  
+- 3 = Sometimes  
+- 4 = Fairly Often  
+- 5 = Frequently  
+""")
+
+# -----------------------------
+# QUESTION SET
 # -----------------------------
 categories = {
 
@@ -107,13 +140,17 @@ categories = {
 
 categories_list = list(categories.keys())
 
-st.title("🌿 Self-Care Assessment Tool 🌿")
-
+# -----------------------------
+# PROGRESS BAR
+# -----------------------------
 progress = st.session_state.step / len(categories_list)
 st.progress(min(progress, 1.0))
 
 st.write(f"Step {min(st.session_state.step + 1, len(categories_list))} of {len(categories_list)}")
 
+# -----------------------------
+# NAVIGATION FUNCTIONS
+# -----------------------------
 def next_step():
     st.session_state.step += 1
 
@@ -125,7 +162,45 @@ def restart():
     st.session_state.step = 0
     st.session_state.responses = {}
 
-responses = {}
+# -----------------------------
+# TXT REPORT FUNCTION
+# -----------------------------
+def create_txt_report():
+    responses = st.session_state.responses
+
+    total_score = sum(responses.values())
+    max_score = len(responses) * 5
+    percentage = (total_score / max_score) * 100
+
+    report = []
+    report.append("SELF-CARE ASSESSMENT REPORT\n")
+    report.append("=" * 40 + "\n")
+
+    report.append(f"Total Score: {total_score} / {max_score}")
+    report.append(f"Overall Percentage: {percentage:.1f}%\n")
+
+    if percentage < 40:
+        report.append("Level: Low self-care (risk of burnout)\n")
+    elif percentage < 70:
+        report.append("Level: Moderate self-care\n")
+    else:
+        report.append("Level: Strong self-care\n")
+
+    report.append("\nCATEGORY BREAKDOWN\n")
+    report.append("-" * 40 + "\n")
+
+    for category, questions in categories.items():
+        cat_score = sum(responses[q] for q in questions)
+        cat_max = len(questions) * 5
+        cat_percent = (cat_score / cat_max) * 100
+
+        report.append(f"{category}")
+        report.append(f"Score: {cat_score}/{cat_max} ({cat_percent:.1f}%)\n")
+
+    report.append("\nDISCLAIMER\n")
+    report.append("This tool is for educational and reflective purposes only.\n")
+
+    return "\n".join(report)
 
 # -----------------------------
 # RESULTS SCREEN
@@ -149,9 +224,6 @@ if st.session_state.step >= len(categories_list):
     else:
         st.success("🟢 Strong self-care: Healthy self-care habits.")
 
-    # -----------------------------
-    # CATEGORY BREAKDOWN
-    # -----------------------------
     st.subheader("📌 Category Breakdown")
 
     for category, questions in categories.items():
@@ -161,55 +233,15 @@ if st.session_state.step >= len(categories_list):
 
         st.write(f"**{category}:** {cat_score}/{cat_max} ({cat_percent:.1f}%)")
 
-def create_txt_report():
-    responses = st.session_state.responses
+    # DOWNLOAD TXT
+    st.download_button(
+        label="📄 Download TXT Report",
+        data=create_txt_report(),
+        file_name="self_care_assessment.txt",
+        mime="text/plain"
+    )
 
-    total_score = sum(responses.values())
-    max_score = len(responses) * 5
-    percentage = (total_score / max_score) * 100
-
-    report = []
-
-    report.append("SELF-CARE ASSESSMENT REPORT\n")
-    report.append("=" * 40 + "\n")
-
-    report.append(f"Total Score: {total_score} / {max_score}")
-    report.append(f"Overall Percentage: {percentage:.1f}%\n")
-
-    # Interpretation
-    if percentage < 40:
-        report.append("Level: Low self-care (risk of burnout)\n")
-    elif percentage < 70:
-        report.append("Level: Moderate self-care\n")
-    else:
-        report.append("Level: Strong self-care\n")
-
-    report.append("\nCATEGORY BREAKDOWN\n")
-    report.append("-" * 40 + "\n")
-
-    for category, questions in categories.items():
-        cat_score = sum(responses[q] for q in questions)
-        cat_max = len(questions) * 5
-        cat_percent = (cat_score / cat_max) * 100
-
-        report.append(f"{category}")
-        report.append(f"Score: {cat_score}/{cat_max} ({cat_percent:.1f}%)\n")
-
-    report.append("\nDISCLAIMER\n")
-    report.append("This tool is for educational and reflective purposes only.\n")
-
-    return "\n".join(report)
-    
-st.download_button(
-    label="📄 Download TXT Report",
-    data=create_txt_report(),
-    file_name="self_care_assessment.txt",
-    mime="text/plain"
-)
-    # -----------------------------
-    # RESTART BUTTON
-    # -----------------------------
-#    st.button("🔄 Restart Assessment", on_click=restart)
+    st.button("🔄 Restart Assessment", on_click=restart)
 
 # -----------------------------
 # QUESTION FLOW
@@ -228,9 +260,6 @@ else:
             key=q
         )
 
-    # -----------------------------
-    # NAVIGATION BUTTONS
-    # -----------------------------
     col1, col2 = st.columns(2)
 
     with col1:
@@ -239,6 +268,3 @@ else:
 
     with col2:
         st.button("Next ➡", on_click=next_step)
-
-
-        

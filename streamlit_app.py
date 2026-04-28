@@ -47,46 +47,83 @@ Reflect on your self-care across different areas of your life.
 categories = {
 
 "💪 Physical Self-Care": [
-"Eat regularly",
-"Eat a balanced diet",
-"Exercise regularly",
+"Eat regularly (e.g. breakfast & lunch)",
+"Eat a well balanced, healthy diet",
+"Exercise at home or go to the gym",
+"Lift weights",
+"Practice martial arts",
+"Get regular medical care for prevention of health problems",
+"Get medical care when needed",
+"Take time off when you're sick",
+"Get massages to help reduce muscle tension",
+"Do physical activity that is fun for you",
+"Take time to be sexually intimate",
 "Get enough sleep",
-"Take breaks when sick",
+"Wear clothes you like",
 "Take vacations",
-"Reduce screen/stress time"
+"Take day trips or mini-vacations",
+"Get away from stressful technology"
 ],
 
 "🧠 Psychological Self-Care": [
-"Self-reflection",
+"Make time for self-reflection",
+"Go to see a psychotherapist or counsellor for yourself",
 "Keep a journal",
-"Learn new things",
-"Manage stress",
-"Set boundaries",
+"Read literature unrelated to work",
+"Do something at which you are a beginner",
+"Take a step to decrease stress in your life",
+"Notice your inner experience (dreams, thoughts, feelings)",
+"Let others know different aspects of you",
+"Engage your intelligence in a new area, cultural activity, sports event, etc",
+"Be curious",
+"Say no to extra responsibilities sometimes",
 "Spend time outdoors"
 ],
 
 "💛 Emotional Self-Care": [
-"Spend time with loved ones",
-"Treat yourself kindly",
-"Express emotions",
-"Do things that make you happy",
-"Laugh often"
+"Spend time with others whose company you enjoy",
+"Stay in contact with important people in your life",
+"Treat yourself kindly (supportive inner dialogue or self-talk)",
+"Feel proud of yourself",
+"Reread favourite books or re-watch favourite movies",
+"Seek comforting activities, people, places",
+"Allow yourself to cry",
+"Find things that make you laugh",
+"Express your outrage constructively",
+"Play with children"
 ],
 
 "🌿 Spiritual Self-Care": [
+"Make time for prayer, meditation, reflection",
 "Spend time in nature",
-"Meditation or prayer",
+"Participate in a spiritual gathering, community or group",
+"Be open to inspiration",
+"Cherish optimism and hope",
+"Be aware of intangible aspects of life",
+"Be open to mystery",
+"Identify what is meaningful to you",
+"Sing",
 "Express gratitude",
-"Reflect on meaning and purpose",
-"Engage in inspiring activities"
+"Celebrate milestones meaningfully",
+"Remember loved ones who passed away",
+"Nurture others",
+"Have 'awesome' experiences",
+"Participate in causes you believe in",
+"Read inspirational literature",
+"Listen to inspiring music"
 ],
 
 "🏢 Workplace Self-Care": [
-"Take breaks at work",
-"Manage workload",
-"Set boundaries at work",
-"Ask for support",
-"Maintain work-life balance"
+"Take time to eat lunch",
+"Take time to chat with co-workers",
+"Make time to complete tasks",
+"Identify tasks that are exciting and rewarding and promote growth",
+"Set limits with clients and colleagues",
+"Balance workload",
+"Arrange your workplace so it is comfortable and comforting",
+"Get regular supervision and consultation",
+"Negotiate for your needs",
+"Have a peer support group"
 ]
 
 }

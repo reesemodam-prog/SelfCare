@@ -13,7 +13,7 @@ This tool aims to:
 
 This self-care assessment is adapted from the following resource:  
 
-[Self-Care Assessment Tool](https://rise.articulate.com/share/i3RuAxAmlt3AIEi5QS1Fyasu-JYib9LT)
+[Self-Care Assessment Tool](https://rise.articulate.com/share/i3RuAxAmlt3AIEi5QS1Fyasu-JYib9LT)  
 Reflect on each statement and select how often it applies to your current lifestyle.
 
 ### Scale

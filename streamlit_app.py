@@ -18,26 +18,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
-categories_list = list(categories.keys())
-
-st.title("🌿 Self-Care Assessment Tool 🌿")
-
-progress = st.session_state.step / len(categories_list)
-st.progress(min(progress, 1.0))
-
-st.write(f"Step {min(st.session_state.step + 1, len(categories_list))} of {len(categories_list)}")
-
-def next_step():
-    st.session_state.step += 1
-
-def prev_step():
-    if st.session_state.step > 0:
-        st.session_state.step -= 1
-
-def restart():
-    st.session_state.step = 0
-    st.session_state.responses = {}
 # -----------------------------
 # FULL QUESTION SET
 # -----------------------------
@@ -124,6 +104,26 @@ categories = {
 ]
 
 }
+
+categories_list = list(categories.keys())
+
+st.title("🌿 Self-Care Assessment Tool 🌿")
+
+progress = st.session_state.step / len(categories_list)
+st.progress(min(progress, 1.0))
+
+st.write(f"Step {min(st.session_state.step + 1, len(categories_list))} of {len(categories_list)}")
+
+def next_step():
+    st.session_state.step += 1
+
+def prev_step():
+    if st.session_state.step > 0:
+        st.session_state.step -= 1
+
+def restart():
+    st.session_state.step = 0
+    st.session_state.responses = {}
 
 responses = {}
 

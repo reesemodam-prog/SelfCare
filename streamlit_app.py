@@ -28,10 +28,19 @@ st.markdown(
 # -----------------------------
 # TITLE
 # -----------------------------
-st.title("🌿 Self-Care Assessment Tool 🌿")
+st.title(" Self-Care Assessment Tool ")
 
 st.markdown("""
-Reflect on your self-care across different areas of your life.
+This tool aims to:
+
+1. Promote self-awareness and reflection  
+2. Support holistic wellbeing  
+3. Encourage individuals to identify areas for growth in self-care  
+4. Align with holistic approaches to wellbeing in education and professional practice  
+
+This self-care assessment is adapted from the following resource:  
+[Self-Care Assessment Tool](https://rise.articulate.com/share/i3RuAxAmlt3AIEi5QS1Fyasu-JYib9LT)  
+
 
 ### Scale
 1 = Never  

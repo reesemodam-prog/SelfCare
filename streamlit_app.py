@@ -1,5 +1,9 @@
 import streamlit as st
+if "step" not in st.session_state:
+    st.session_state.step = 0
 
+if "responses" not in st.session_state:
+    st.session_state.responses = {}
 st.title("🌿 Self-Care Assessment Tool 🌿")
 st.markdown(
     """
@@ -13,6 +17,7 @@ st.markdown(
 )
 st.markdown("""
 Self-assessment is an important reflective process that helps individuals understand their strengths and areas for improvement and supports self-directed learning.  
+
 This tool aims to:
 
 1. Promote self-awareness and reflection  
@@ -20,9 +25,7 @@ This tool aims to:
 3. Encourage individuals to identify areas for growth in self-care  
 4. Align with holistic approaches to wellbeing in education and professional practice  
 
-
 This self-care assessment is adapted from the following resource:  
-
 [Self-Care Assessment Tool](https://rise.articulate.com/share/i3RuAxAmlt3AIEi5QS1Fyasu-JYib9LT)  
 Reflect on each statement and select how often it applies to your current lifestyle.
 
@@ -119,26 +122,35 @@ categories = {
 ]
 
 }
-
+def next_step():
+    st.session_state.step += 1
 responses = {}
 
 # -----------------------------
 # INPUT SECTION
 # -----------------------------
-for category, questions in categories.items():
-    st.subheader(category)
-    for q in questions:
-        responses[q] = st.radio(
-            q,
-            [1, 2, 3, 4, 5],
-            horizontal=True,
-            key=q
-        )
+categories_list = list(categories.keys())
+
+current_category = categories_list[st.session_state.step]
+
+st.subheader(current_category)
+
+for q in categories[current_category]:
+    st.session_state.responses[q] = st.radio(
+        q,
+        [1, 2, 3, 4, 5],
+        horizontal=True,
+        key=q
+    )
+
+if st.button("Next"):
+    next_step()
+    st.rerun()
 
 # -----------------------------
-# RESULTS
-# -----------------------------
-if st.button("📊 Calculate My Results"):
+if st.session_state.step >= len(categories_list):
+
+    responses = st.session_state.responses
 
     total_score = sum(responses.values())
     max_score = len(responses) * 5
@@ -148,21 +160,13 @@ if st.button("📊 Calculate My Results"):
     st.write(f"**Total Score:** {total_score} / {max_score}")
     st.write(f"**Overall Self-Care Level:** {percentage:.1f}%")
 
-    # Interpretation
     if percentage < 40:
         st.error("⚠️ Low self-care: You may be at risk of burnout. Start with small, manageable steps.")
     elif percentage < 70:
         st.warning("🟡 Moderate self-care: You are practicing some strategies, but there is room to grow.")
     else:
         st.success("🟢 Strong self-care: You are maintaining healthy and consistent self-care practices.")
-    st.subheader("⚠️ Disclaimer")
-    st.info("""
-    This tool is intended for educational and reflective purposes only.  
-    It is not a diagnostic or clinical assessment.
-    """)
-    # -----------------------------
-    # CATEGORY BREAKDOWN
-    # -----------------------------
+
     st.subheader("📌 Category Breakdown")
 
     for category, questions in categories.items():
@@ -172,17 +176,8 @@ if st.button("📊 Calculate My Results"):
 
         st.write(f"**{category}:** {cat_score}/{cat_max} ({cat_percent:.1f}%)")
 
-
-
-
-
-    # -----------------------------
-    # REFLECTION (important for your course)
-    # -----------------------------
-
-   # reflection = st.text_area(
-   #     "What is ONE small action you will take this week to improve your self-care?"
-  #  )
-
-#    if reflection:
- #       st.success("Small steps lead to meaningful change 💚")
+    st.subheader("⚠️ Disclaimer")
+    st.info("""
+    This tool is intended for educational and reflective purposes only.  
+    It is not a diagnostic or clinical assessment.
+    """)

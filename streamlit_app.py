@@ -209,7 +209,7 @@ st.download_button(
     # -----------------------------
     # RESTART BUTTON
     # -----------------------------
-    st.button("🔄 Restart Assessment", on_click=restart)
+#    st.button("🔄 Restart Assessment", on_click=restart)
 
 # -----------------------------
 # QUESTION FLOW

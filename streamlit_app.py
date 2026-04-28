@@ -20,6 +20,19 @@ st.markdown(
     .stApp {
         background-color: #C8F7E5;
     }
+        /* Force all text elements to black */
+    p, span, label, div, h1, h2, h3 {
+        color: black !important;
+    }
+
+    /* Streamlit-specific overrides */
+    .stRadio label {
+        color: black !important;
+    }
+
+    .stMarkdown {
+        color: black !important;
+    }
     </style>
     """,
     unsafe_allow_html=True

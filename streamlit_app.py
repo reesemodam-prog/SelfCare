@@ -161,36 +161,51 @@ if st.session_state.step >= len(categories_list):
 
         st.write(f"**{category}:** {cat_score}/{cat_max} ({cat_percent:.1f}%)")
 
-    # -----------------------------
-    # PDF EXPORT
-    # -----------------------------
-    def create_pdf():
-        pdf = FPDF()
-        pdf.add_page()
-        pdf.set_font("Arial", size=12)
+def create_txt_report():
+    responses = st.session_state.responses
 
-        pdf.cell(200, 10, "Self-Care Assessment Results", ln=True)
+    total_score = sum(responses.values())
+    max_score = len(responses) * 5
+    percentage = (total_score / max_score) * 100
 
-        pdf.ln(5)
-        pdf.cell(200, 10, f"Total Score: {total_score}/{max_score}", ln=True)
-        pdf.cell(200, 10, f"Percentage: {percentage:.1f}%", ln=True)
+    report = []
 
-        pdf.ln(5)
-        pdf.cell(200, 10, "Category Breakdown:", ln=True)
+    report.append("SELF-CARE ASSESSMENT REPORT\n")
+    report.append("=" * 40 + "\n")
 
-        for category, questions in categories.items():
-            cat_score = sum(responses[q] for q in questions)
-            pdf.cell(200, 8, f"{category}: {cat_score}", ln=True)
+    report.append(f"Total Score: {total_score} / {max_score}")
+    report.append(f"Overall Percentage: {percentage:.1f}%\n")
 
-        return pdf.output(dest="S").encode("latin-1")
+    # Interpretation
+    if percentage < 40:
+        report.append("Level: Low self-care (risk of burnout)\n")
+    elif percentage < 70:
+        report.append("Level: Moderate self-care\n")
+    else:
+        report.append("Level: Strong self-care\n")
 
-    st.download_button(
-        "📄 Download PDF Report",
-        data=create_pdf(),
-        file_name="self_care_assessment.pdf",
-        mime="application/pdf"
-    )
+    report.append("\nCATEGORY BREAKDOWN\n")
+    report.append("-" * 40 + "\n")
 
+    for category, questions in categories.items():
+        cat_score = sum(responses[q] for q in questions)
+        cat_max = len(questions) * 5
+        cat_percent = (cat_score / cat_max) * 100
+
+        report.append(f"{category}")
+        report.append(f"Score: {cat_score}/{cat_max} ({cat_percent:.1f}%)\n")
+
+    report.append("\nDISCLAIMER\n")
+    report.append("This tool is for educational and reflective purposes only.\n")
+
+    return "\n".join(report)
+    
+st.download_button(
+    label="📄 Download TXT Report",
+    data=create_txt_report(),
+    file_name="self_care_assessment.txt",
+    mime="text/plain"
+)
     # -----------------------------
     # RESTART BUTTON
     # -----------------------------

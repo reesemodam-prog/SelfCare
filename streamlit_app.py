@@ -1,7 +1,8 @@
 import streamlit as st
 
-st.title("🌿 Self-Care Assessment Tool")
+st.title("🌿 Self-Care Assessment Tool 🌿")
 st.markdown("""
+Self-assessment is an important reflective process that helps individuals understand their strengths and areas for improvement and supports self-directed learning.  
 This tool aims to:
 
 1. Promote self-awareness and reflection  
@@ -9,8 +10,10 @@ This tool aims to:
 3. Encourage individuals to identify areas for growth in self-care  
 4. Align with holistic approaches to wellbeing in education and professional practice  
 
-Self-assessment is an important reflective process that helps individuals understand their strengths and areas for improvement and supports self-directed learning.  
 
+This self-care assessment is adapted from the following resource:  
+
+[Self-Care Assessment Tool](https://rise.articulate.com/share/i3RuAxAmlt3AIEi5QS1Fyasu-JYib9LT)
 Reflect on each statement and select how often it applies to your current lifestyle.
 
 ### Scale

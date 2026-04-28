@@ -40,8 +40,8 @@ This tool aims to:
 3. Encourage individuals to identify areas for growth in self-care  
 4. Align with holistic approaches to wellbeing in education and professional practice  
 
-This self-care assessment is adapted from:  
-https://rise.articulate.com/share/i3RuAxAmlt3AIEi5QS1Fyasu-JYib9LT  
+This assessment is adapted from the following resource:  
+[Self-Care Assessment Tool](https://rise.articulate.com/share/i3RuAxAmlt3AIEi5QS1Fyasu-JYib9LT)
 
 ### Scale
 - 1 = It has never occurred to me  

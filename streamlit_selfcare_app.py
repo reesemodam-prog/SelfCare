@@ -273,7 +273,8 @@ if st.session_state.q_index < total_questions:
 # RESULTS SCREEN
 # -----------------------------
 else:
-
+    st.progress(1.0)
+    st.success("🎉 You’ve completed the assessment!")
     responses = st.session_state.responses
 
     total_score = sum(responses.values())

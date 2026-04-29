@@ -25,6 +25,20 @@ st.markdown(
         color: black;
     }
 
+        /* FIX BUTTONS (important for mobile dark mode) */
+    .stButton>button {
+        background-color: #4CAF50 !important;
+        color: white !important;
+        border-radius: 8px;
+        border: none;
+    }
+
+    /* Optional hover effect */
+    .stButton>button:hover {
+        background-color: #45a049 !important;
+        color: white !important;
+    }
+
     /* Streamlit-specific overrides */
     .stRadio label {
         color: #9AE6BF;
